@@ -4,10 +4,10 @@
   become: true
 
   tasks:
-  - name: install packages
+  - name: htop
     community.general.pacman:
-      name:
-        - htop
+      name: htop
+      
 
   # - name: copy wallpaper file
   #   copy:
