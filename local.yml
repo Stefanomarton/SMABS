@@ -1,6 +1,6 @@
 ---
-- hosts: localhost
-  connection: local
+- hosts: archlinux
+  # connection: local
   become: true
 
   tasks:
