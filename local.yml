@@ -3,12 +3,10 @@
   connection: local
   become: true
 
-  tasks:
-  - name: htop
-    community.general.pacman:
-      name: htop
-      
-
+- name: Install package foo from repo
+  community.general.pacman:
+    name: htop
+    state: present
   # - name: copy wallpaper file
   #   copy:
   #     src: files/wallpaper.png
