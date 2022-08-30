@@ -4,8 +4,29 @@
   tasks:
   - name: Prova
     community.general.pacman: 
-     name: htop
+     name: 
+      - htop
+      - sxiv
+      - kitty
+      - awesome
+      - ranger
+      - neovim
+      - obsidian
+      - zathura 
+      - poppler
+      - zathura-pdf-poppler
+      - texlab
+      - texlive-most
+      - flatpak
+      - rofi
+      - treesitter
+      - alsa-utils
+      - fzf
+      - yarn
+      - ripgrep
+      - flameshot
      state: present
+
   # - name: copy wallpaper file
   #   copy:
   #     src: files/wallpaper.png
