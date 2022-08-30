@@ -5,7 +5,7 @@
 
   tasks:
   - name: install packages
-    package:
+    community.general.pacman:
       name:
         - htop
 
