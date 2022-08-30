@@ -2,10 +2,10 @@
 - hosts: all
   become: true
   tasks:
-    - name
-      community.general.pacman:
-        name: htop
-        state: present
+  - name: Prova
+   community.general.pacman:
+   name: htop
+   state: present
   # - name: copy wallpaper file
   #   copy:
   #     src: files/wallpaper.png
