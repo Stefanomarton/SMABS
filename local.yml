@@ -3,7 +3,7 @@
   connection: local
   become: true
 
-- task:
+- tasks:
   name: Install package foo from repo
   community.general.pacman:
     name: htop
