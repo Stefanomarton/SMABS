@@ -1,13 +1,11 @@
 ---
-- hosts: localhost
-  connection: local
+- hosts: all
   become: true
-
-- tasks:
-  name: Install package foo from repo
-  community.general.pacman:
-    name: htop
-    state: present
+  tasks:
+    - name
+      community.general.pacman:
+      name: htop
+      state: present
   # - name: copy wallpaper file
   #   copy:
   #     src: files/wallpaper.png
