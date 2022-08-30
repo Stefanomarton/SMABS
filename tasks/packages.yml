@@ -1,5 +1,5 @@
-- name: install basic utils, shells, apps
-  community.general.pacman:
-   name:
-    - htop
+name: install basic utils, shells, apps
+community.general.pacman:
+  name:
+  - htop
    state: present
