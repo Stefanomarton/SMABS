@@ -2,6 +2,15 @@
 - hosts: localhost
   become: true
   tasks:
+
+  - name: Ansible create multiple directories with_items    
+    file:
+     path: ~/{{item}}
+     state: directory    
+     with_items:
+      - 'Gitthings'      
+      - 'Mything'      
+
   - name: Prova
     community.general.pacman: 
      name: 
@@ -19,12 +28,28 @@
       - texlive-most
       - flatpak
       - rofi
-      - treesitter
+      - tree-sitter
       - alsa-utils
       - fzf
       - yarn
       - ripgrep
       - flameshot
+      - starship
+      - highlight
+      - sddm
+      - python-pillow
+      - git 
+      - base-devel
+      - qmk 
+      - zsh-syntax-highlighting
+      - arandr
+      - lxappearance
+      - pulsemixer
+      - network-manager-applet
+      - stow
+      - xarchiver
+      - firefox
+      - nautilus
      state: present
 
   # - name: copy wallpaper file
@@ -72,3 +97,27 @@
   #     user: velociraptor
   #     minute: "*/10"
   #     job: ansible-pull -o -U https://github.com/jlacroix82/ansible_pull_tutorial.git
+
+
+# - hosts: localhost
+#   tasks:
+#     - name: test
+#       file: path=/tmp/{{item.0}}/{{item.1}} state=directory
+#       with_nested:
+#         - ['test1', 'test2']
+#         - ['bin', 'conf']
+
+
+# - name: Make sure the sites-available, sites-enabled and conf.d directories exist
+#   file:
+#     path: "{{nginx_dir}}/{{item}}"
+#     owner: root
+#     group: root
+#     mode: 0755
+#     recurse: yes
+#     state: directory
+#   with_items: ["sites-available", "sites-enabled", "conf.d"]
+
+
+
+ 
