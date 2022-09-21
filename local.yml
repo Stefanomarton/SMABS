@@ -50,6 +50,8 @@
       - xarchiver
       - firefox
       - nautilus
+      - bitwarden
+      - pandoc
      state: present
 
   # - name: copy wallpaper file
