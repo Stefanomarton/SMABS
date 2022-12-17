@@ -7,7 +7,7 @@
 git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
 echo "Agg' installlat yay"
 
-# Installing packages
+# Installing packages, use pacman -Qqe > pkglist.txt to create the list
 yay -S --needed - < pkglist.txt
 
 # DotFiles 
