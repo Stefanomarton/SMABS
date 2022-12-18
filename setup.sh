@@ -7,17 +7,28 @@
 pacman -S --needed git base-devel
 git clone https://aur.archlinux.org/yay.git
 cd yay
+sudo chown -R stefanomarton:users yay
 makepkg -si
 echo "Agg' installlat yay"
 
+pacman=(
+    nvim
+		)
+
+yay=(
+		spotify
+		)
+
 # Installing packages, use pacman -Qqe > pkglist.txt to create the list
-yay -S --needed - < pkglist.txt
+
+sudo pacman -S --noconfirm ${pacman[@]}
+yay -S --noconfirm ${yay[@]}
 
 # DotFiles 
-cd ..
-git clone --recursive https://github.com/Stefanomarton/DotFiles.git && cd DotFiles && stow . 
-
-# Fonts configuration
-sudo cp -r ~/Media/Fonts/JetBrainsMono/ /usr/share/fonts/
+# cd ..
+# git clone --recursive https://github.com/Stefanomarton/DotFiles.git && cd DotFiles && stow . 
+#
+# # Fonts configuration
+# sudo cp -r ~/Media/Fonts/JetBrainsMono/ /usr/share/fonts/
 
 
