@@ -3,24 +3,21 @@
 
 echo 'Updating Applications'
 sudo pacman -Syyu
-echo ' '
 
 echo 'Cleaning caches and directories'
 sudo pacman -Sc 
-echo ' '
 
-echo ' '
 echo 'PreInstalling process completed'
 
-
+echo 'Installing yay'
 # Yay Installing
-pacman -S --needed git base-devel
+pacman -S git base-devel
 git clone https://aur.archlinux.org/yay.git
+sudo chown -R stefanomarton:user yay
 cd yay
-sudo chown -R stefanomarton:users yay
 makepkg -si
 cd
-echo "Agg' installlat yay"
+echo 'Installed yay'
 
 pacman=(
     neovim 
@@ -71,6 +68,7 @@ pacman=(
 		starship
 		xclip
     thunderbird
+		npm
 		)
 
 yay=(
@@ -104,7 +102,7 @@ yay=(
 # Installing packages, use pacman -Qqe > pkglist.txt to create the list
 
 sudo pacman -S --noconfirm ${pacman[@]}
-yay -S --noconfirm ${yay[@]}
+yay -S ${yay[@]}
 
 # DotFiles 
 git clone --recursive https://github.com/Stefanomarton/DotFiles.git && cd DotFiles && stow . 
@@ -115,3 +113,6 @@ sudo cp -r ~/Media/Fonts/JetBrainsMono/ /usr/share/fonts/
 # Git Credential
 git-credential-manager configure
 git config --global credential.credentialStore cache
+
+# Settings zsh as default shell
+chsh -s /bin/zsh stefanomarton
