@@ -1,5 +1,5 @@
 #!/bin/bash
-# Run using $ curl https://raw.githubusercontent.com/Stefanomarton/SMABS/master/setup.sh | sh
+# git clone https://raw.github.com/Stefanomarton/SMABS.git
 
 echo 'Updating Applications'
 sudo pacman -Syu
@@ -74,6 +74,9 @@ pacman=(
 		xorg
 		xorg-xsetroot
 		hugo
+		lightdm
+		lightdm-gtk-greeter
+		networkmanager
 )
 
 
@@ -121,33 +124,31 @@ else
 	echo "The grml is not installed"
 fi
 
+# Enable lightdm
+sudo systemctl enable lightdm.service
+
+# Enable networkmanager
+sudo systemctl enable net
+
 # DotFiles
-git clone --bare --recurse-submodules https://github.com/Stefanomarton/DotFiles.git &
-git --git-dir=$HOME/.dotfiles/ config --local status.showUntrackedFiles no &
-git --git-dir=$HOME/.dotfiles/ checkout -f
+git clone --bare --recurse-submodules https://github.com/Stefanomarton/DotFiles.git 
+git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME config --local status.showUntrackedFiles no 
+git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME checkout -f
 
 # Fonts configuration
-sudo cp -r ~/.local/share/Fonts/JetBrainsMono/ /usr/share/fonts/
+sudo cp -r ~/.local/share/Fonts/JetBrainsMono /usr/share/fonts
 
 # Settings zsh as default shell
 sudo chsh -s /bin/zsh $USER
-
-# Settings the correct path
-sudo echo "if [[ -z "$XDG_CONFIG_HOME" ]]                                                                                               
-then
-        export XDG_CONFIG_HOME="$HOME/.config/"
-fi
-
-if [[ -d "$XDG_CONFIG_HOME/zsh" ]]
-then
-        export ZDOTDIR="$XDG_CONFIG_HOME/zsh/"
-fi" > /etc/zsh/zshenv
 
 # Set firefox default browser
 firefox --headless --setDefaultBrowser
 
 # Install zpico
 curl -sL --create-dirs https://gitlab.com/thornjad/zpico/-/raw/main/zpico.zsh -o $HOME/.local/lib/zpico/zpico.zsh
+
+# Copy zshenv
+sudo cp -r ~/SMABS/Files/zshenv /etc/zsh
 
 # Git Credential
 # gh auth login
