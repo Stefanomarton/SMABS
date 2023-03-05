@@ -125,8 +125,6 @@ else
 	echo "The grml is not installed"
 fi
 
-# Enable lightdm
-sudo systemctl enable lightdm.service
 
 # Enable networkmanager
 sudo systemctl enable networkmanager.service
@@ -146,7 +144,7 @@ sudo cp -r ~/.local/share/Fonts/JetBrainsMono /usr/share/fonts
 sudo chsh -s /bin/zsh $USER
 
 # Set firefox default browser
-firefox --headless --setDefaultBrowser
+#firefox --headless --setDefaultBrowser
 
 # Install zpico
 curl -sL --create-dirs https://gitlab.com/thornjad/zpico/-/raw/main/zpico.zsh -o $HOME/.local/lib/zpico/zpico.zsh
