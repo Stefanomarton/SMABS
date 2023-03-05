@@ -77,6 +77,8 @@ pacman=(
 		lightdm
 		lightdm-gtk-greeter
 		networkmanager
+		awesome
+		gnome-keyring
 )
 
 
@@ -90,7 +92,7 @@ yay=(
 		xbanish
 		cava
 		insync
-		ferdium
+		ferdium_bin
 		swww
 		espanso
 		github-cli
@@ -125,15 +127,11 @@ else
 	echo "The grml is not installed"
 fi
 
-
-# Enable networkmanager
-sudo systemctl enable networkmanager.service
-
 # Enable grub os prober
 echo "GRUB_DISABLE_OS_PROBER=false" | sudo tee -a /etc/default/grub 
 
 # DotFiles
-git clone --bare --recurse-submodules https://github.com/Stefanomarton/DotFiles.git 
+git clone --bare --recurse-submodules https://github.com/Stefanomarton/DotFiles.git .dotfiles
 git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME config --local status.showUntrackedFiles no 
 git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME checkout -f
 
@@ -142,9 +140,6 @@ sudo cp -r ~/.local/share/Fonts/JetBrainsMono /usr/share/fonts
 
 # Settings zsh as default shell
 sudo chsh -s /bin/zsh $USER
-
-# Set firefox default browser
-#firefox --headless --setDefaultBrowser
 
 # Install zpico
 curl -sL --create-dirs https://gitlab.com/thornjad/zpico/-/raw/main/zpico.zsh -o $HOME/.local/lib/zpico/zpico.zsh
