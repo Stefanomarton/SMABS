@@ -110,6 +110,7 @@ yay=(
 		ncspot
 		ticktick
 		topgrade
+		update-grub
 )
 
 for ya in "${yay[@]}"; do
@@ -128,7 +129,10 @@ fi
 sudo systemctl enable lightdm.service
 
 # Enable networkmanager
-sudo systemctl enable net
+sudo systemctl enable networkmanager.service
+
+# Enable grub os prober
+echo "GRUB_DISABLE_OS_PROBER=false" | sudo tee -a /etc/default/grub 
 
 # DotFiles
 git clone --bare --recurse-submodules https://github.com/Stefanomarton/DotFiles.git 
