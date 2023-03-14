@@ -74,13 +74,11 @@ pacman=(
 		xorg
 		xorg-xsetroot
 		hugo
-		lightdm
-		lightdm-gtk-greeter
 		networkmanager
 		awesome
 		gnome-keyring
+		linux-zen
 )
-
 
 for pac in "${pacman[@]}"; do
 		echo "INSTALLING: ${pac}"
@@ -129,6 +127,7 @@ fi
 
 # Enable grub os prober
 echo "GRUB_DISABLE_OS_PROBER=false" | sudo tee -a /etc/default/grub 
+sudo update-grub
 
 # DotFiles
 git clone --bare --recurse-submodules https://github.com/Stefanomarton/DotFiles.git .dotfiles
