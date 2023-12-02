@@ -66,6 +66,7 @@ programs_pacman=(
 		discord
 		emacs-nativecomp
 		fzf
+		syncthing
 		git-delta
 		lazygit
 		bat
@@ -108,7 +109,6 @@ programs_pacman=(
 		spice-vdagent
 		texlive-meta
 		virt-manager
-		prettier
 		picom
 		polkit-gnome
 		qemu
@@ -119,6 +119,9 @@ programs_pacman=(
         # Archives
 		unzip
         unrar
+        # Language-Servers
+        bash-language-server
+		prettier
 )
 
 xorg_yay=(
