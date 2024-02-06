@@ -45,13 +45,13 @@ programs_yay=(
 		update-grub
 		texlive-meta
 		looking-glass-git
-		ranger-git
 		ptsh
 		wpgtk
 )
 programs_pacman=(
+        yazi
+        navi
 		cargo
-		qutebrowser
 		neovim
         biber
 		zsh
@@ -103,6 +103,7 @@ programs_pacman=(
 		feh
 		flameshot
 		hunspell-en_us
+		hunspell-en_gb
 		hunspell-en_it
 		languagetool
 		libre-office-fresh
