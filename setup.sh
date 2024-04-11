@@ -49,6 +49,11 @@ programs_yay=(
 		wpgtk
 )
 programs_pacman=(
+        stow
+        rocm-smi-lib
+        atool
+        perl-image-exiftool
+        words
         yazi
         navi
 		cargo
@@ -75,7 +80,10 @@ programs_pacman=(
 		glow
 		gparted
 		gpick
+        fd
+        libqalculate
 		pipewire-alsa
+        libreoffice-fresh
 		pipewire-pulse
 		rofi
 		qmk
@@ -98,6 +106,7 @@ programs_pacman=(
 		networkmanager
 		gnome-keyring
 		linux-zen
+        enchant
 		pandoc
 		deja-dup
 		feh
@@ -139,7 +148,7 @@ wl_yay=(
         tofi
         # swww
         wlr-randr
-        espanso-wayland
+        espanso-wayland-git
 )
 wl_pacman=(
         waybar
@@ -214,9 +223,8 @@ sudo update-grub
 
 # DotFiles
 echo "Installing DotFiles"
-git clone --bare --recurse-submodules https://github.com/Stefanomarton/DotFiles.git .dotfiles
-git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME config --local status.showUntrackedFiles no 
-git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME checkout -f
+git clone --recurse-submodules https://github.com/Stefanomarton/DotFiles.git .dotfiles
+cd ~/.dotfiles/ && stow .
 
 # Fonts configuration
 echo "Configuring Fonts"
